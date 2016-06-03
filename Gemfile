@@ -15,7 +15,9 @@ end
 group :development do
   gem 'sqlite3'
 end
-
+group :development do
+  gem 'pry-rails'
+end
 gem 'bootstrap-sass'
 
 
