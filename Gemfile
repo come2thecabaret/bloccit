@@ -10,6 +10,7 @@ group :production do
 end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'shoulda'
 end
 # #2
 group :development do
