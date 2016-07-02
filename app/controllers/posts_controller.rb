@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :require_sign_in, except: :show
   before_action :authorize_moderator, except: [:show, :new, :create, :destroy]
   before_action :authorize_admin, only: [:destroy]
 
