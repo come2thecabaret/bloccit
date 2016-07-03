@@ -8,8 +8,9 @@ RSpec.describe Topic, type: :model do
   let(:my_topic) { Topic.create!(name: name, description: description) }
 
   it { is_expected.to have_many(:posts) }
-
-# #1
+  it { is_expected.to have_many(:labelings) }
+  it { is_expected.to have_many(:labels).through(:labelings) }
+  
   describe "attributes" do
     it "has name, description, and public attributes" do
       expect(my_topic).to have_attributes(name: name, description: description, public: public)
@@ -20,7 +21,7 @@ RSpec.describe Topic, type: :model do
       expect(my_topic.public).to be(true)
     end
   end
-  
+
 
 
 end
