@@ -16,11 +16,10 @@
   <div class="col-md-8">
     <p><%= @post.body %></p>
     <div>
-      <h3>Comemnts</h3>
-      <%= render @post.comments %>
+      <%= render partial: "comments/comment", locals: { commentable: @post, comment: @comment } %>
     </div>
     <% if current_user %>
-      <%= render 'comments/form', comment: Comment.new, post: @post %>
+      <%= render partial: 'comments/form', locals: { commentable: @post, comment: @comment } %>
     <% end %>
   </div>
   <% if user_is_authorized_for_post?(@post) %>
