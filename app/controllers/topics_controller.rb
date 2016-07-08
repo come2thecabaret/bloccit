@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @comments = @topic.comments
+    @comments = @topic.comments.order(created_at: :desc)
   end
 
   def new
