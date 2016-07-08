@@ -11,14 +11,14 @@ class CommentsController < ApplicationController
     end
 
     @comment = @commentable.comments.build(comment_params)
+    @comment.user = current_user
     if @comment.save
       flash[:notice] = "Comment was saved succesffully."
-      redirect_to [@commentable, @comment]
     else
       flash[:alert] = "Comment couldn't be saved. Try again."
-      redirect_to [@commentable]
     end
-    end
+    redirect_to :back
+  end
 
 
   def destroy
