@@ -27,12 +27,21 @@ topics = Topic.all
 end
 posts = Post.all
 
-#  Comment.create!(
-#  user: users.sample,
-#  post: posts.sample,
-#  body: RandomData.random_paragraph
-#  )
-#end
+30.times do
+ Comment.create!(
+   user: users.sample,
+   commentable: topics.sample,
+   body: RandomData.random_paragraph
+ )
+end
+
+30.times do
+ Comment.create!(
+   user: users.sample,
+   commentable: posts.sample,
+   body: RandomData.random_paragraph
+ )
+end
 
 admin = User.create!(
   name:     'Admin User',

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706162005) do
+ActiveRecord::Schema.define(version: 20160708204413) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20160706162005) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
-    t.integer  "post_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "user_id"
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160706162005) do
     t.integer  "commentable_id"
   end
 
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 

@@ -15,8 +15,9 @@
 <div class="row">
   <div class="col-md-8">
     <p><%= @post.body %></p>
+    <h3>Comments</h3>
     <div>
-      <%= render partial: "comments/comment", locals: { commentable: @post, comment: @comment } %>
+      <%= render @comments %>
     </div>
     <% if current_user %>
       <%= render partial: 'comments/form', locals: { commentable: @post, comment: @comment } %>

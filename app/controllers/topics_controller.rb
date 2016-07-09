@@ -2,12 +2,14 @@ class TopicsController < ApplicationController
 
   before_action :require_sign_in, except: [:index, :show]
   before_action :authorize_user, except: [:index, :show]
+
   def index
     @topics = Topic.all
   end
 
   def show
     @topic = Topic.find(params[:id])
+    @comments = @topic.comments.order(created_at: :desc)
   end
 
   def new
