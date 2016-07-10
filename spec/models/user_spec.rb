@@ -2,8 +2,7 @@ require 'rails_helper'
 
 
  RSpec.describe User, type: :model do
-   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
-
+   let(:user) { create(:user) }
    it { is_expected.to have_many(:posts) }
    it { is_expected.to have_many (:comments) }
    it { is_expected.to have_many (:votes) }
@@ -71,4 +70,15 @@ describe "#favorite_for(post)" do
     expect(user.favorite_for(@post)).to eq(favorite)
   end
 end
-end
+describe ".avatar_url" do
+ # #6
+     let(:known_user) { create(:user, email: "blochead@bloc.io") }
+
+     it "returns the proper Gravatar url for a known email entity" do
+ # #7
+       expected_gravatar = "http://gravatar.com/avatar/bb6d1172212c180cfbdb7039129d7b03.png?s=48"
+ # #8
+       expect(known_user.avatar_url(48)).to eq(expected_gravatar)
+     end
+   end
+ end

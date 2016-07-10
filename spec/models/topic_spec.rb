@@ -5,18 +5,16 @@ RSpec.describe Topic, type: :model do
   let(:name) { RandomData.random_sentence }
   let(:description) { RandomData.random_paragraph }
   let(:public) { true }
-  let(:my_topic) { Topic.create!(name: name, description: description) }
-
+  let(:my_topic) { create(:topic) }
   it { is_expected.to have_many(:posts) }
   it { is_expected.to have_many(:labelings) }
   it { is_expected.to have_many(:labels).through(:labelings) }
-  
+
   describe "attributes" do
     it "has name, description, and public attributes" do
-      expect(my_topic).to have_attributes(name: name, description: description, public: public)
-    end
+       expect(my_topic).to have_attributes(name: my_topic.name, description: my_topic.description)
+     end
 
-# #2
     it "is public by default" do
       expect(my_topic.public).to be(true)
     end
